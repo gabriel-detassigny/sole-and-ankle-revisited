@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { COLORS, WEIGHTS, QUERIES } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import Icon from '../Icon';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -28,6 +29,9 @@ const Header = () => {
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
+          <MobileLink id="shopping-bag" strokeWidth={1} />
+          <MobileLink id="search" strokeWidth={1} />
+          <MobileLink id="menu" strokeWidth={1} />
         </Nav>
         <Side />
       </MainHeader>
@@ -52,10 +56,25 @@ const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media ${QUERIES.tabletAndDown} {
+    margin: 0;
+    gap: 32px;
+  }
+  
+  @media ${QUERIES.phoneOnly} {
+    gap: 16px;
+  }
 `;
 
 const Side = styled.div`
   flex: 1;
+
+  @media ${QUERIES.tabletAndDown} {
+    &:empty {
+      display: none;
+    }
+  }
 `;
 
 const NavLink = styled.a`
@@ -67,6 +86,18 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: ${COLORS.secondary};
+  }
+
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
+`;
+
+const MobileLink = styled(Icon)`
+  display: none;
+  
+  @media ${QUERIES.tabletAndDown} {
+    display: revert;
   }
 `;
 
