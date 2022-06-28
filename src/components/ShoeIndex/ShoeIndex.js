@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { WEIGHTS } from '../../constants';
+import { WEIGHTS, QUERIES } from '../../constants';
 
 import Breadcrumbs from '../Breadcrumbs';
 import Select from '../Select';
@@ -13,6 +13,15 @@ const ShoeIndex = ({ sortId, setSortId }) => {
   return (
     <Wrapper>
       <MainColumn>
+        <MobileBreadcrumbsWrapper>
+          <Breadcrumbs>
+            <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+            <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+            <Breadcrumbs.Crumb href="/sale/shoes">
+              Shoes
+            </Breadcrumbs.Crumb>
+          </Breadcrumbs>
+        </MobileBreadcrumbsWrapper>
         <Header>
           <Title>Running</Title>
           <Select
@@ -51,6 +60,16 @@ const Wrapper = styled.div`
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
+`;
+
+const MobileBreadcrumbsWrapper = styled.div`
+  display: none;
+  @media ${QUERIES.tabletAndDown} {
+    display: revert;
+  }
 `;
 
 const MainColumn = styled.div`

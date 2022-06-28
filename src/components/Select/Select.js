@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { COLORS, WEIGHTS, QUERIES } from '../../constants';
 
 import Icon from '../Icon';
+import ShoeIndex from '../ShoeIndex';
 
 const Select = ({ label, value, children, ...delegated }) => {
   const childArray = React.Children.toArray(children);
@@ -36,6 +37,11 @@ const Select = ({ label, value, children, ...delegated }) => {
 const Wrapper = styled.label`
   display: flex;
   align-items: baseline;
+  ${ShoeIndex} & {
+    @media ${QUERIES.phoneOnly} {
+      display: none;
+    }
+  }
 `;
 
 const VisibleLabel = styled.span`
