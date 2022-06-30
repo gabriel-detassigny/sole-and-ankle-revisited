@@ -31,8 +31,9 @@ const Header = () => {
           <NavLink href="/collections">Collections</NavLink>
           <MobileLink id="shopping-bag" strokeWidth={1} />
           <MobileLink id="search" strokeWidth={1} />
-          <MobileLink id="menu" strokeWidth={1} />
+          <MobileLink id="menu" strokeWidth={1} onClick={() => setShowMobileMenu(true) } />
         </Nav>
+
         <Side />
       </MainHeader>
 
